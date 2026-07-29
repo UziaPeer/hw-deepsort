@@ -8,6 +8,7 @@ def deep_sorted(x:any)->str:
             return (1, sorted(key(i) for i in v))
         return (0, v)
 
+
     if isinstance(x, dict):
         return "{" + ", ".join(f"{deep_sorted(k)}: {deep_sorted(x[k])}" for k in sorted(x, key=key)) + "}"
     if isinstance(x, list):
