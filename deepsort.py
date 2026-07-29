@@ -1,5 +1,5 @@
 def deep_sorted(x:any)->str:
-   def key(v):
+ def key(v):
         if isinstance(v, dict):
             return (3, [(key(k), key(v[k])) for k in sorted(v, key=key)])
         if isinstance(v, (list, tuple)):
@@ -7,7 +7,6 @@ def deep_sorted(x:any)->str:
         if isinstance(v, set):
             return (1, sorted(key(i) for i in v))
         return (0, v)
-
 
     if isinstance(x, dict):
         return "{" + ", ".join(f"{deep_sorted(k)}: {deep_sorted(x[k])}" for k in sorted(x, key=key)) + "}"
