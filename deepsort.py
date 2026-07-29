@@ -1,12 +1,12 @@
 def deep_sorted(x:any)->str:
     if isinstance(x, dict):
-        return "{" + ", ".join(deep_sorted(k) + ": " + deep_sorted(x[k]) for k in sorted(x)) + "}"
+        return "{" + ", ".join(repr(k) + ": " + deep_sorted(x[k]) for k in sorted(x)) + "}"
     if isinstance(x, list):
-        return "[" + ", ".join(deep_sorted(i) for i in sorted(x)) + "]"
+        return "[" + ", ".join(sorted(deep_sorted(i) for i in x)) + "]"
     if isinstance(x, tuple):
-        return "(" + ", ".join(deep_sorted(i) for i in sorted(x)) + ")"
+        return "(" + ", ".join(sorted(deep_sorted(i) for i in x)) + ")"
     if isinstance(x, set):
-        return "{" + ", ".join(deep_sorted(i) for i in sorted(x)) + "}"
+        return "{" + ", ".join(sorted(deep_sorted(i) for i in x)) + "}"
     return str(x)
 
 
